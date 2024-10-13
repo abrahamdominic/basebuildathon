@@ -5,14 +5,13 @@ import {
 	Image,
 	Animated,
 	Pressable,
-	StatusBar,
 	StyleSheet,
-	SafeAreaView,
 	ScrollView,
 	Alert
 } from 'react-native'
 import Feather from '@expo/vector-icons/Feather'
 import { LinearGradient } from 'expo-linear-gradient'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import onBoardImage from '../../assets/onboard1.png'
 import { Color, Gradient } from '../../components/Color'
 
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
 	},
 	topBox: {
 		gap: 3,
-		paddingTop: 90,
+		paddingTop: 60,
 		display: 'flex',
 		flexDirection: 'row'
 	},

@@ -1,7 +1,7 @@
 export enum Color {
 	lightBlue = '#E0EAFF',
 	midBlue = '#A8C0FA',
-	fontBlack = '#0C0C0C',
+	textBlack = '#0C0C0C',
 	primaryBlue = '#0656FF'
 }
 

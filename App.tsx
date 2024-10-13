@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import * as Font from 'expo-font'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import FirstScreen from './screens/onboarding/first.tsx'
-import SecondScreen from './screens/onboarding/second.tsx'
-import ThirdScreen from './screens/onboarding/third.tsx'
+import FirstScreen from './screens/onboarding/first'
+import SecondScreen from './screens/onboarding/second'
+import ThirdScreen from './screens/onboarding/third'
+import SignupPrompt from './screens/components/signup_prompt'
 
 const App = (): React.JSX.Element | null => {
 	const [fontLoaded, setFontLoaded] = useState<boolean>(false)
@@ -47,6 +48,7 @@ const App = (): React.JSX.Element | null => {
 						name='Onboarding_Third_Screen'
 						component={ThirdScreen}
 					/>
+					<Stack.Screen name='Signup_Prompt' component={SignupPrompt} />
 				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>

@@ -5,14 +5,13 @@ import {
 	Image,
 	Animated,
 	Pressable,
-	StatusBar,
 	StyleSheet,
-	SafeAreaView,
 	ScrollView,
 	Alert
 } from 'react-native'
 import Feather from '@expo/vector-icons/Feather'
 import { LinearGradient } from 'expo-linear-gradient'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import onBoardImage from '../../assets/onboard3.png'
 import { Color, Gradient } from '../../components/Color'
 
@@ -54,7 +53,7 @@ export default function ThirdScreen({ navigation }): React.JSX.Element {
 			<Pressable
 				style={styles.button}
 				android_ripple={{ color: Color.lightBlue }}
-				onPress={() => navigation.navigate('Onboarding_First_Screen')}
+				onPress={() => navigation.navigate('Signup_Prompt')}
 			>
 				<Text
 					style={{
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
 	},
 	topBox: {
 		gap: 3,
-		paddingTop: 90,
+		paddingTop: 60,
 		display: 'flex',
 		flexDirection: 'row'
 	},
