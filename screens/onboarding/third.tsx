@@ -13,7 +13,7 @@ import Feather from '@expo/vector-icons/Feather'
 import { LinearGradient } from 'expo-linear-gradient'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import onBoardImage from '../../assets/onboard3.png'
-import { Color, Gradient } from '../../components/Color'
+import { Color, Gradient } from '../../types/Color'
 
 export default function ThirdScreen({ navigation }): React.JSX.Element {
 	const width = React.useRef(new Animated.Value(7)).current
@@ -53,12 +53,12 @@ export default function ThirdScreen({ navigation }): React.JSX.Element {
 			<Pressable
 				style={styles.button}
 				android_ripple={{ color: Color.lightBlue }}
-				onPress={() => navigation.navigate('Signup_Prompt')}
+				onPress={() => navigation.navigate('signup_prompt')}
 			>
 				<Text
 					style={{
 						color: '#fff',
-						fontSize: 14,
+						fontSize: 13,
 						fontFamily: 'IBMPlexSans-Medium'
 					}}
 					children='Get Started'
@@ -115,11 +115,12 @@ const styles = StyleSheet.create({
 		fontFamily: 'IBMPlexSans-Regular'
 	},
 	button: {
-		paddingHorizontal: 30,
+		paddingHorizontal: 40,
 		paddingVertical: 15,
 		marginTop: 'auto',
 		marginBottom: 30,
-		borderRadius: 7,
+		borderRadius: 6,
+		textAlignVertical: 'center',
 		backgroundColor: Color.primaryBlue
 	}
 })

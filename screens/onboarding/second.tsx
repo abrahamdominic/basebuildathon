@@ -13,7 +13,7 @@ import Feather from '@expo/vector-icons/Feather'
 import { LinearGradient } from 'expo-linear-gradient'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import onBoardImage from '../../assets/onboard2.png'
-import { Color, Gradient } from '../../components/Color'
+import { Color, Gradient } from '../../types/Color'
 
 export default function SecondScreen({ navigation }): React.JSX.Element {
 	const width = React.useRef(new Animated.Value(7)).current
@@ -56,7 +56,7 @@ export default function SecondScreen({ navigation }): React.JSX.Element {
 					color: Color.lightBlue,
 					radius: 32
 				}}
-				onPress={() => navigation.navigate('Onboarding_Third_Screen')}
+				onPress={() => navigation.navigate('onboarding_third_screen')}
 			>
 				<Feather
 					name='arrow-right'

@@ -2,13 +2,17 @@ import React from 'react'
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Ionicons from '@expo/vector-icons/Ionicons'
+import Feather from '@expo/vector-icons/Feather'
+import { Link } from '@react-navigation/native'
 import { Color } from '../../types/Color'
 
-const SignupPrompt = ({ navigation }): React.JSX.Element => {
+const SignupOption = ({ navigation, route }): React.JSX.Element => {
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text style={styles.heading} children='Who are you Signing up as?' />
+			<Text
+				style={styles.heading}
+				children='Select an option below to create an account'
+			/>
 			<TouchableOpacity
 				style={[
 					styles.component,
@@ -17,34 +21,44 @@ const SignupPrompt = ({ navigation }): React.JSX.Element => {
 					}
 				]}
 				onPress={() =>
-					navigation.navigate('signup_option', {
-						userType: 'manufacturer'
+					navigation.navigate('email_signup', {
+						userType: route.params.userType
 					})
 				}
 			>
 				<MaterialCommunityIcons
-					name='bank-check'
+					name='email-outline'
 					size={28}
 					color={Color.textBlack}
 					style={styles.iconBox}
 				/>
-				<Text style={styles.label} children='Sign up as Manufacturer' />
+				<Text style={styles.label} children='E-mail' />
 			</TouchableOpacity>
 			<View style={styles.hrLine} />
 			<TouchableOpacity
 				style={styles.component}
 				onPress={() =>
-					navigation.navigate('signup_option', { userType: 'consumer' })
+					navigation.navigate('phone_signup', {
+						userType: route.params.userType
+					})
 				}
 			>
-				<Ionicons
-					name='person-circle-outline'
+				<Feather
+					name='smartphone'
 					size={28}
 					color={Color.textBlack}
 					style={styles.iconBox}
 				/>
-				<Text style={styles.label} children='Sign up as Consumer' />
+				<Text style={styles.label} children='Phone number' />
 			</TouchableOpacity>
+			<Text style={styles.existingText}>
+				Already have an account?{' '}
+				<Link
+					children={'Login'}
+					to={{ screen: 'email_signup' }}
+					style={styles.existingTextLink}
+				/>
+			</Text>
 		</SafeAreaView>
 	)
 }
@@ -83,7 +97,16 @@ const styles = StyleSheet.create({
 		height: 3,
 		marginVertical: 15,
 		backgroundColor: Color.lightBlue
+	},
+	existingText: {
+		fontSize: 11,
+		marginTop: 20,
+		color: Color.textBlack,
+		fontFamily: 'IBMPlexSans-Regular'
+	},
+	existingTextLink: {
+		color: Color.primaryBlue
 	}
 })
 
-export default SignupPrompt
+export default SignupOption
