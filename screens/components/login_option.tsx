@@ -6,12 +6,12 @@ import Feather from '@expo/vector-icons/Feather'
 import { Link } from '@react-navigation/native'
 import { Color } from '../../types/Color'
 
-const SignupOption = ({ navigation, route }): React.JSX.Element => {
+const LoginOption = ({ navigation }): React.JSX.Element => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text
 				style={styles.heading}
-				children='Select an option below to create an account'
+				children='Sign into an existing account'
 			/>
 			<TouchableOpacity
 				style={[
@@ -20,11 +20,7 @@ const SignupOption = ({ navigation, route }): React.JSX.Element => {
 						marginTop: 30
 					}
 				]}
-				onPress={() =>
-					navigation.navigate('email_signup', {
-						userType: route.params.userType
-					})
-				}
+				onPress={() => navigation.navigate('email_login')}
 			>
 				<MaterialCommunityIcons
 					name='email-outline'
@@ -37,11 +33,7 @@ const SignupOption = ({ navigation, route }): React.JSX.Element => {
 			<View style={styles.hrLine} />
 			<TouchableOpacity
 				style={styles.component}
-				onPress={() =>
-					navigation.navigate('phone_signup', {
-						userType: route.params.userType
-					})
-				}
+				onPress={() => navigation.navigate('phone_login')}
 			>
 				<Feather
 					name='smartphone'
@@ -51,11 +43,24 @@ const SignupOption = ({ navigation, route }): React.JSX.Element => {
 				/>
 				<Text style={styles.label} children='Phone number' />
 			</TouchableOpacity>
+			<View style={styles.hrLine} />
+			<TouchableOpacity
+				style={styles.component}
+				onPress={() => navigation.navigate('device_linking')}
+			>
+				<MaterialCommunityIcons
+					name='cellphone-link'
+					size={28}
+					color={Color.textBlack}
+					style={styles.iconBox}
+				/>
+				<Text style={styles.label} children='Pair with another device' />
+			</TouchableOpacity>
 			<Text style={styles.existingText}>
-				Already have an account?{' '}
+				Don't have an account?{' '}
 				<Link
-					children={'Login'}
-					to={{ screen: 'login_option' }}
+					children={'Sign up'}
+					to={{ screen: 'signup_prompt' }}
 					style={styles.existingTextLink}
 				/>
 			</Text>
@@ -109,4 +114,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default SignupOption
+export default LoginOption

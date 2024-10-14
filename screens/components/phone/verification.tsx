@@ -43,7 +43,7 @@ const PhoneVerification = ({ navigation, route }): React.JSX.Element => {
 
 		if (input.length < 4) {
 			Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
-			setError('Field is required')
+			setError('Invalid OTP code')
 			return
 		}
 		navigation.navigate('phone_verified')

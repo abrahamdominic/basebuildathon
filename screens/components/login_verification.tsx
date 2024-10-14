@@ -9,11 +9,17 @@ import {
 } from 'react-native'
 import * as Haptics from 'expo-haptics'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Color } from '../../../types/Color'
+import { Color } from '../../types/Color'
 
-const EmailVerification = ({ navigation, route }): React.JSX.Element => {
+const LoginVerification = ({ navigation, route }): React.JSX.Element => {
 	const [error, setError] = React.useState<string | null>(null)
-	const [otp, setOtp] = React.useState<number[]>(['', '', '', ''] as number[])
+	const [otp, setOtp] = React.useState<number[]>([
+		'',
+		'',
+		'',
+		'',
+		''
+	] as number[])
 	const inputs = React.useRef([])
 
 	const handleChange = (value, index) => {
@@ -46,21 +52,21 @@ const EmailVerification = ({ navigation, route }): React.JSX.Element => {
 	const submit = function () {
 		let input = otp.join('')
 
-		if (input.length < 4) {
+		if (input.length < 5) {
 			Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
 			setError('Invalid OTP code')
 			return
 		}
-		navigation.navigate('email_verified')
+		navigation.navigate('login_verified')
 	}
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text style={styles.heading} children='E-mail Verification' />
+			<Text style={styles.heading} children='Account Verification' />
 			<Text
 				style={styles.label}
 				accessibilityLabel='email'
-				children='A four digit code has been sent to your mail, input them for verification.'
+				children='A five digit code has been sent to your mail, input them for verification.'
 			/>
 			<View style={styles.inputWrapper}>
 				{otp.map((digit, index) => (
@@ -177,4 +183,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default EmailVerification
+export default LoginVerification

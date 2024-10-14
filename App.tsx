@@ -14,6 +14,13 @@ import EmailVerification from './screens/components/email/verification'
 import PhoneSignup from './screens/components/phone/signup'
 import PhoneVerified from './screens/components/phone/verified'
 import PhoneVerification from './screens/components/phone/verification'
+import LoginOption from './screens/components/login_option'
+import EmailLogin from './screens/components/email/login'
+import PhoneLogin from './screens/components/phone/login'
+import LoginVerified from './screens/components/login_verified'
+import LoginVerification from './screens/components/login_verification'
+import DeviceLinking from './screens/components/device_linking/linking'
+import DevicePair from './screens/components/device_linking/pair'
 
 const App = (): React.JSX.Element | null => {
 	const [fontLoaded, setFontLoaded] = useState<boolean>(false)
@@ -38,11 +45,12 @@ const App = (): React.JSX.Element | null => {
 	return (
 		<NavigationContainer>
 			<StatusBar backgroundColor='#fff' barStyle='dark-content' />
+
 			<Stack.Navigator
 				initialRouteName='onboarding_first_screen'
 				screenOptions={{ headerShown: false }}
 			>
-				{/* Welcome Onboard Screens */}
+				{/* WELCOME ONBOARD SCREENS */}
 				<Stack.Group screenOptions={{ animation: 'slide_from_right' }}>
 					<Stack.Screen
 						name='onboarding_first_screen'
@@ -58,7 +66,8 @@ const App = (): React.JSX.Element | null => {
 					/>
 					<Stack.Screen name='signup_prompt' component={SignupPrompt} />
 				</Stack.Group>
-				{/* Welcome Signup Screens */}
+
+				{/* SIGNUP SCREENS */}
 				<Stack.Group screenOptions={{ animation: 'fade_from_bottom' }}>
 					<Stack.Screen name='signup_option' component={SignupOption} />
 					<Stack.Screen name='email_signup' component={EmailSignup} />
@@ -73,6 +82,24 @@ const App = (): React.JSX.Element | null => {
 						name='phone_verification'
 						component={PhoneVerification}
 					/>
+				</Stack.Group>
+
+				{/* LOGIN SCREENS */}
+				<Stack.Group screenOptions={{ animation: 'fade_from_bottom' }}>
+					<Stack.Screen name='login_option' component={LoginOption} />
+					<Stack.Screen name='email_login' component={EmailLogin} />
+					<Stack.Screen name='phone_login' component={PhoneLogin} />
+					<Stack.Screen name='login_verified' component={LoginVerified} />
+					<Stack.Screen
+						name='login_verification'
+						component={LoginVerification}
+					/>
+				</Stack.Group>
+
+				{/* DEVICE LINKING SCREENS */}
+				<Stack.Group screenOptions={{ animation: 'fade_from_bottom' }}>
+					<Stack.Screen name='device_linking' component={DeviceLinking} />
+					<Stack.Screen name='device_pair' component={DevicePair} />
 				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>
