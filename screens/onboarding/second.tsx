@@ -18,12 +18,16 @@ import { Color, Gradient } from '../../types/Color'
 export default function SecondScreen({ navigation }): React.JSX.Element {
 	const width = React.useRef(new Animated.Value(7)).current
 
-	Animated.timing(width, {
-		delay: 500,
-		duration: 300,
-		toValue: 30,
-		useNativeDriver: false
-	}).start()
+	React.useEffect(
+		() =>
+			Animated.timing(width, {
+				delay: 300,
+				duration: 500,
+				toValue: 30,
+				useNativeDriver: false
+			}).start(),
+		[]
+	)
 
 	return (
 		<SafeAreaView style={styles.container}>

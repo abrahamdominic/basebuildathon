@@ -21,6 +21,7 @@ import LoginVerified from './screens/components/login_verified'
 import LoginVerification from './screens/components/login_verification'
 import DeviceLinking from './screens/components/device_linking/linking'
 import DevicePair from './screens/components/device_linking/pair'
+import DevicePaired from './screens/components/device_linking/paired'
 
 const App = (): React.JSX.Element | null => {
 	const [fontLoaded, setFontLoaded] = useState<boolean>(false)
@@ -99,6 +100,7 @@ const App = (): React.JSX.Element | null => {
 				{/* DEVICE LINKING SCREENS */}
 				<Stack.Group screenOptions={{ animation: 'fade_from_bottom' }}>
 					<Stack.Screen name='device_linking' component={DeviceLinking} />
+					<Stack.Screen name='device_paired' component={DevicePaired} />
 					<Stack.Screen name='device_pair' component={DevicePair} />
 				</Stack.Group>
 			</Stack.Navigator>

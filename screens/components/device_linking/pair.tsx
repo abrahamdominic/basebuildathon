@@ -1,25 +1,67 @@
 import React from 'react'
-import { Text, View, StyleSheet, Pressable, Animated } from 'react-native'
+import {
+	Text,
+	View,
+	StyleSheet,
+	Pressable,
+	Animated,
+	Image
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Color, Gradient } from '../../../types/Color'
 
 const DevicePair = ({ navigation }): React.JSX.Element => {
-	const width = React.useRef(new Animated.Value(7)).current
+	const transition = React.useRef(new Animated.Value(0)).current
 
-	Animated.timing(width, {
-		delay: 300,
-		duration: 500,
-		toValue: 30,
-		useNativeDriver: false
-	}).start()
+	React.useEffect(
+		() =>
+			Animated.loop(
+				Animated.sequence([
+					Animated.timing(transition, {
+						toValue: 1,
+						duration: 1000,
+						useNativeDriver: false
+					}),
+					Animated.timing(transition, {
+						toValue: 0,
+						duration: 1000,
+						useNativeDriver: false
+					})
+				])
+			).start(),
+		[]
+	)
+
+	setTimeout(() => navigation.navigate('device_paired'), 3000)
+
+	const styles2 = StyleSheet.create({
+		transitionStyle: {
+			transform: [
+				{
+					translateY: transition.interpolate({
+						inputRange: [0, 1],
+						outputRange: [-20, 250]
+					})
+				}
+			]
+		}
+	})
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.wrapper}>
 				<View style={styles.boxWrapper}>
-					<View style={styles.box} />
-					<Animated.View style={[styles.boxRollerWrapper, { width }]}>
+					<View style={styles.box}>
+						<Image
+							resizeMode='center'
+							style={styles.qrIcon}
+							source={require('../../../assets/qr-code.png')}
+						/>
+					</View>
+					<Animated.View
+						style={[styles.boxRollerWrapper, styles2.transitionStyle]}
+					>
 						<LinearGradient
 							colors={Gradient.blueGradient}
 							style={styles.boxRoller}
@@ -73,6 +115,10 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: 30,
 		position: 'absolute'
+	},
+	qrIcon: {
+		width: '80%',
+		margin: 'auto'
 	}
 })
 
