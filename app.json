@@ -2,6 +2,7 @@
     "expo": {
         "name": "MedCrypt",
         "slug": "MedCrypt",
+        "scheme": "medcrypt",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
@@ -24,6 +25,6 @@
         "web": {
             "favicon": "./assets/favicon.png"
         },
-        "plugins": ["expo-font"]
+        "plugins": [ "expo-font" ]
     }
 }
