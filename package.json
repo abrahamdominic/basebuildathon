@@ -4,8 +4,8 @@
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "npx expo start",
-    "android": "npx expo start --android",
-    "ios": "npx expo start --ios",
+    "android": "npx expo run:android",
+    "ios": "npx expo run:ios",
     "web": "npx expo start --web"
   },
   "dependencies": {
